@@ -13,8 +13,11 @@ class RestaurantsController < ApplicationController
   # POST restaurants/:id
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new, status: :unprocessable_entity # re-renders the 'new' template
+    end
   end
 
   # GET restaurants/:id
