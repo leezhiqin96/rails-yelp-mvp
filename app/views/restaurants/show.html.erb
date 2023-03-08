@@ -1,3 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 <p><%= @restaurant.category %></p>
 <p><%= @restaurant.address %></p>
+
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item"><%= review.rating %></li>
+  <% end %>
+</ul>
+<br>
