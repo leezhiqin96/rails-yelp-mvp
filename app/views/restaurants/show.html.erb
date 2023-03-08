@@ -7,6 +7,11 @@
   <% @restaurant.reviews.each do |review| %>
     <li class="list-group-item"><%= review.content %></li>
     <li class="list-group-item"><%= review.rating %></li>
+    <li class="list-group-item">
+      <%= link_to "Delete review",
+      review_path(review),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </li>
   <% end %>
 </ul>
 <br>

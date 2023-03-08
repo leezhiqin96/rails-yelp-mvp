@@ -14,6 +14,13 @@ class ReviewsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
+  # DELETE "restaurants/:restaurant_id/reviews/:id"
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to restaurant_path(@review.restaurant), status: :see_other
+  end
+
   private
 
   def set_restaurant
